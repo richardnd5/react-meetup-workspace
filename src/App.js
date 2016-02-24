@@ -43,32 +43,69 @@ class CommentForm extends Component {
 
   constructor(props) {
     super();
+
+    this.state = {
+      name: '',
+      message: '',
+      error: ''
+    }
+
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFieldChange = this.handleFieldChange.bind(this);
+  }
+
+  handleFieldChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let name = ReactDOM.findDOMNode(this.refs.name).value.trim();
-    let message = ReactDOM.findDOMNode(this.refs.message).value.trim();
 
-    if(!message || !name) {
+    const {name, message} = this.state;
+
+    if(!message.trim() || !name.trim()) {
+      this.setState({
+        error: 'You must enter a name and message'
+      })
       return;
     }
 
-    this.props.onCommentSubmit({name: name, message: message});
-    ReactDOM.findDOMNode(this.refs.name).value = '';
-    ReactDOM.findDOMNode(this.refs.message).value = '';
-    return;
+    this.props.onCommentSubmit({
+      name,
+      message
+    });
+
+    this.setState({
+      message: '',
+      name: '',
+      error: ''
+    })
+
   }
 
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        {this.state.error}
         <div>
-          <input type="text" placeholder="Your name" ref="name" />
+          <input
+            type="text"
+            name="name"
+            value={this.state.name}
+            onChange={this.handleFieldChange}
+            placeholder="Your name"
+          />
         </div>
         <div>
-          <input type="text" placeholder="Say something" ref="message" />
+          <input
+            type="text"
+            name="message"
+            value={this.state.message}
+            onChange={this.handleFieldChange}
+            placeholder="Say something"
+          />
         </div>
         <div>
           <input type="submit" value="Post" />
