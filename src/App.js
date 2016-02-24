@@ -16,8 +16,12 @@ var App = React.createClass({
     }
   },
   handleCommentSubmit: function(comment) {
+    var comments = this.state.comments;
+
+    var newComments = comments.concat([comment]);
+
     this.setState({
-      comments: Array.concat([], comments, [comment])
+      comments: newComments
     })
   },
   render: function() {
@@ -127,3 +131,9 @@ var Comment = React.createClass({
     );
   }
 });
+
+
+
+module.exports = {
+  App: App
+}
