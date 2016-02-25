@@ -134,6 +134,4 @@ var Comment = React.createClass({
 
 
 
-module.exports = {
-  App: App
-}
+module.exports = App;
