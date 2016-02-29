@@ -1,3 +1,3 @@
 # React meetup workspace
 
-The purpose of this repository is solely store React code for a meetup organized by @Kikoku
+The purpose of this repository is solely to store React code for our meetup organized by @Kikoku
