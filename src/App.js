@@ -24,11 +24,25 @@ var App = React.createClass({
       comments: newComments
     })
   },
-  handleCommentRemove: function(index) {
+  handleCommentDelete: function(index) {
 
     var comments = this.state.comments;
 
     comments.splice(index, 1);
+
+    this.setState({
+      comments: comments
+    })
+  },
+  handleCommentUpdate: function(index, comment) {
+
+    console.log('handling update')
+
+    var comments = this.state.comments;
+
+    comments[index] = comment;
+
+    console.log(comments)
 
     this.setState({
       comments: comments
@@ -39,7 +53,11 @@ var App = React.createClass({
       <div>
         <h1>Comments</h1>
         <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
-        <CommentList comments={this.state.comments} onCommentDelete={this.handleCommentRemove}/>
+        <CommentList
+          comments={this.state.comments}
+          onCommentDelete={this.handleCommentDelete}
+          onCommentUpdate={this.handleCommentUpdate}
+        />
       </div>
     );
   }
@@ -107,7 +125,6 @@ var CommentForm = React.createClass({
         <div>
           <input type="submit" value="Post" />
         </div>
-
       </form>
     )
   }
@@ -115,14 +132,20 @@ var CommentForm = React.createClass({
 
 var CommentList = React.createClass({
   render: function() {
-    var commentDelete = this.props.onCommentDelete;
+    var props = this.props;
+
     return (
       <div>
-        {this.props.comments.map(function(comment, i) {
+        {props.comments.map(function(comment, i) {
           return (
-            <Comment name={comment.name} keyValue={i} handleDeleteComment={commentDelete}>
-              {comment.message}
-            </Comment>
+            <Comment
+              key={i}
+              name={comment.name}
+              id={i}
+              onDelete={props.onCommentDelete}
+              onUpdate={props.onCommentUpdate}
+              message={comment.message}
+            />
           );
         })}
       </div>
@@ -131,19 +154,72 @@ var CommentList = React.createClass({
 });
 
 var Comment = React.createClass({
-  commentDelete: function() {
-    this.props.handleDeleteComment(this.props.keyValue);
+  getInitialState: function() {
+    return {
+      commentEdit: '',
+      isEditing: false
+    }
+  },
+  handleDeleteBtnClick: function() {
+    this.props.onDelete(this.props.id);
+  },
+  handleEditBtnClick: function() {
+    this.setState({
+      commentEdit: this.props.message,
+      isEditing: true
+    });
+  },
+  handleInputChange: function(e) {
+    this.setState({
+      commentEdit: e.target.value
+    })
+  },
+  renderEditComment: function() {
+    return (
+      <form onSubmit={this.handleEditSubmit}>
+        <input
+          value={this.state.commentEdit}
+          onChange={this.handleInputChange}
+        />
+      </form>
+    )
+  },
+  handleEditSubmit: function(e) {
+    e.preventDefault();
+
+    var msg = this.state.commentEdit;
+
+    if(!msg || !msg.trim()) {
+      console.log('Edited comment must have a value.');
+      return;
+    }
+
+    var newComment = {
+      name: this.props.name,
+      message: msg
+    }
+
+    this.props.onUpdate(this.props.id, newComment);
+
+    this.setState({
+      isEditing: false,
+      commentEdit: ''
+    })
+  },
+  renderComment: function() {
+    return (
+      <div>
+        <p>{this.props.message}</p>
+        <button onClick={this.handleEditBtnClick}>Edit</button>
+        <button onClick={this.handleDeleteBtnClick}>Delete</button>
+      </div>
+    )
   },
   render: function() {
     return (
       <div>
         <h3>{this.props.name}</h3>
-        <p>
-          {this.props.children}
-        </p>
-        <button onClick={this.commentDelete}>
-          Delete
-        </button>
+        {this.state.isEditing ? this.renderEditComment() : this.renderComment()}
       </div>
     );
   }
