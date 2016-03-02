@@ -24,12 +24,22 @@ var App = React.createClass({
       comments: newComments
     })
   },
+  handleCommentRemove: function(index) {
+
+    var comments = this.state.comments;
+
+    comments.splice(index, 1);
+
+    this.setState({
+      comments: comments
+    })
+  },
   render: function() {
     return (
       <div>
         <h1>Comments</h1>
         <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
-        <CommentList comments={this.state.comments}/>
+        <CommentList comments={this.state.comments} onCommentDelete={this.handleCommentRemove}/>
       </div>
     );
   }
@@ -105,11 +115,12 @@ var CommentForm = React.createClass({
 
 var CommentList = React.createClass({
   render: function() {
+    var commentDelete = this.props.onCommentDelete;
     return (
       <div>
         {this.props.comments.map(function(comment, i) {
           return (
-            <Comment name={comment.name} key={i}>
+            <Comment name={comment.name} keyValue={i} handleDeleteComment={commentDelete}>
               {comment.message}
             </Comment>
           );
@@ -120,6 +131,9 @@ var CommentList = React.createClass({
 });
 
 var Comment = React.createClass({
+  commentDelete: function() {
+    this.props.handleDeleteComment(this.props.keyValue);
+  },
   render: function() {
     return (
       <div>
@@ -127,6 +141,9 @@ var Comment = React.createClass({
         <p>
           {this.props.children}
         </p>
+        <button onClick={this.commentDelete}>
+          Delete
+        </button>
       </div>
     );
   }
