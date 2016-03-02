@@ -35,14 +35,9 @@ var App = React.createClass({
     })
   },
   handleCommentUpdate: function(index, comment) {
-
-    console.log('handling update')
-
     var comments = this.state.comments;
 
     comments[index] = comment;
-
-    console.log(comments)
 
     this.setState({
       comments: comments
