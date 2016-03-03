@@ -151,7 +151,8 @@ var CommentList = React.createClass({
 var Comment = React.createClass({
   getInitialState: function() {
     return {
-      commentEdit: '',
+      name: '',
+      message: '',
       isEditing: false
     }
   },
@@ -160,50 +161,65 @@ var Comment = React.createClass({
   },
   handleEditBtnClick: function() {
     this.setState({
-      commentEdit: this.props.message,
+      message: this.props.message,
+      name: this.props.name,
       isEditing: true
     });
   },
   handleInputChange: function(e) {
     this.setState({
-      commentEdit: e.target.value
+      [e.target.name]: e.target.value
     })
-  },
-  renderEditComment: function() {
-    return (
-      <form onSubmit={this.handleEditSubmit}>
-        <input
-          value={this.state.commentEdit}
-          onChange={this.handleInputChange}
-        />
-      </form>
-    )
   },
   handleEditSubmit: function(e) {
     e.preventDefault();
 
-    var msg = this.state.commentEdit;
+    console.log('edit sumit')
 
-    if(!msg || !msg.trim()) {
+    var message = this.state.message;
+    var name = this.state.name;
+
+    if(!name || !name.trim() || !message || !message.trim()) {
       console.log('Edited comment must have a value.');
       return;
     }
 
     var newComment = {
-      name: this.props.name,
-      message: msg
+      message: message,
+      name: name
     }
 
     this.props.onUpdate(this.props.id, newComment);
 
     this.setState({
       isEditing: false,
-      commentEdit: ''
+      message: '',
+      name: ''
     })
+  },
+  renderEditComment: function() {
+    return (
+      <form onSubmit={this.handleEditSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={this.state.name}
+          onChange={this.handleInputChange}
+        />
+        <input
+          type="text"
+          name="message"
+          value={this.state.message}
+          onChange={this.handleInputChange}
+        />
+        <input type="submit" value="Update" />
+      </form>
+    )
   },
   renderComment: function() {
     return (
       <div>
+        <h3>{this.props.name}</h3>
         <p>{this.props.message}</p>
         <button onClick={this.handleEditBtnClick}>Edit</button>
         <button onClick={this.handleDeleteBtnClick}>Delete</button>
@@ -213,7 +229,6 @@ var Comment = React.createClass({
   render: function() {
     return (
       <div>
-        <h3>{this.props.name}</h3>
         {this.state.isEditing ? this.renderEditComment() : this.renderComment()}
       </div>
     );
