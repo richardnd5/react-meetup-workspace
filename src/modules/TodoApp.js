@@ -81,6 +81,7 @@ class TodoList extends Component {
             <Todo text={todo.text} key={i} />
           )
         })}
+        <p>Jargon</p>
       </div>
     )
   }
