@@ -5,6 +5,8 @@ import Workspace from './modules/Workspace';
 import Home from './modules/Home';
 import CommentApp from './modules/CommentApp';
 import TodoApp from './modules/TodoApp';
+import myPage from './modules/myPage';
+
 
 
 export default (
@@ -12,5 +14,6 @@ export default (
     <IndexRoute component={Home}/>
     <Route path="comment" component={CommentApp}/>
     <Route path="todo" component={TodoApp} />
+    <Route path="mypage" component={myPage} />
   </Route>
 )
