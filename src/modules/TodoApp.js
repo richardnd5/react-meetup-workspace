@@ -74,19 +74,30 @@ class TodoForm extends Component {
 
 // Do the toggle thingy (down below). Turn these babies to stateless.
 
-class TodoList extends Component {
-  render() {
+const TodoList = ({ todos }) => (
+  <div>
+  {todos.map((todo, i) => {
     return (
-      <div>
-        {this.props.todos.map( (todo, i) => {
-          return (
-            <Todo text={todo.text} key={i} />
-          )
-        })}
-      </div>
+      <Todo text={todo.text} key={i} />
     )
-  }
-}
+  })}
+  </div>
+
+)
+
+// class TodoList extends Component {
+//   render() {
+//     return (
+//       <div>
+//       {this.props.todos.map( (todo, i) => {
+//         return (
+//           <Todo text={todo.text} key={i} />
+//         )
+//       })}
+//       </div>
+//     )
+//   }
+// }
 
 class Todo extends Component {
 
