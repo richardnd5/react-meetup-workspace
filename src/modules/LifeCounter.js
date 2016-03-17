@@ -25,13 +25,11 @@ class LifeCounter extends Component {
         lifeTotal={this.state.lifeTotal}
         chickens={this.state.chickens}/>
       <Button
-        onClick={this.handleLifeChange}
-        value={1}
+        onClick={() => this.handleLifeChange(1)}
         text="Up"
       />
       <Button
-        onClick={this.handleLifeChange}
-        value={-1}
+        onClick={() => this.handleLifeChange(-1)}
         text="Down"
       />
     </div>
@@ -46,22 +44,8 @@ const Pad = ({ lifeTotal, chickens }) => (
   </div>
 )
 
-class Button extends Component {
-
-  constructor(props){
-    super(props);
-    this.handleLifeChange = this.handleLifeChange.bind(this);
-  }
-
-  handleLifeChange(){
-    this.props.onClick(this.props.value)
-  }
-
-  render(){
-    return (
-      <button onClick={this.handleLifeChange}>{this.props.text}</button>
-    )
-  }
-}
+const Button = ({ onClick, text }) => (
+  <button onClick={onClick}>{text} so long chicken</button>
+)
 
 export default LifeCounter;
