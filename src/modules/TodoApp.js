@@ -73,7 +73,6 @@ class TodoForm extends Component {
 }
 
 // Do the toggle thingy (down below). Turn these babies to stateless.
-
 class TodoList extends Component {
   render() {
     return (
@@ -91,7 +90,7 @@ class TodoList extends Component {
 class Todo extends Component {
 
   toggleFinish() {
-
+    console.log('hi');
 
   }
 
@@ -99,7 +98,7 @@ class Todo extends Component {
     return (
       <div style={{
       backgroundColor:'#8888BE',
-      textDecoration:'line-through'
+      textDecoration:'none'
     }} onClick={this.props.toggleFinish}>
         {this.props.text}
       </div>
