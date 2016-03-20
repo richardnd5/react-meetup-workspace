@@ -6,10 +6,7 @@ function Workspace(props) {
     <div>
       <nav>
         <IndexLink to="/">Home</IndexLink>{' '}
-        <Link to="/comment">Comment</Link>{' '}
-        <Link to="/todo">Todo</Link> {' '}
-        <Link to="/mypage">Just My Page</Link> {' '}
-        <Link to="/lifecounter">Life CouNTER</Link>
+        <Link to="/comment">New Song</Link>{' '}
       </nav>
       {props.children}
     </div>

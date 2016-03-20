@@ -4,27 +4,19 @@ class CommentApp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {comments: [
-      {
-        name: 'Pete Hunt',
-        message: 'this is one comment'
-      },
-      {
-        name: 'Jordan Walke',
-        message: 'this is another comment'
-      }
-    ]}
+    this.state = {
+      songs: []}
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
   }
 
   handleCommentSubmit(comment) {
 
-    const { comments } = this.state;
+    const { songs } = this.state;
 
-    const newComments = comments.concat([comment]);
+    const newComments = songs.concat([comment]);
 
     this.setState({
-      comments: newComments
+      songs: newComments
     })
   }
 
@@ -33,7 +25,7 @@ class CommentApp extends Component {
       <div>
         <h1>Comments</h1>
         <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
-        <CommentList comments={this.state.comments}/>
+        <CommentList songs={this.state.songs}/>
       </div>
     );
   }
@@ -76,8 +68,9 @@ class CommentForm extends Component {
     });
 
     this.setState({
-      message: '',
-      name: '',
+      title: '',
+      artist: '',
+      lyrics: '',
       error: ''
     })
   }
@@ -89,18 +82,27 @@ class CommentForm extends Component {
           <input
             type="text"
             name="name"
-            value={this.state.name}
+            value={this.state.title}
             onChange={this.handleFieldChange}
-            placeholder="Your name"
+            placeholder="Song Title"
           />
         </div>
         <div>
           <input
             type="text"
             name="message"
+            value={this.state.artist}
+            onChange={this.handleFieldChange}
+            placeholder="Artist"
+          />
+        </div>
+        <div>
+          <textarea
+            type="text"
+            name="message"
             value={this.state.message}
             onChange={this.handleFieldChange}
-            placeholder="Say something"
+            placeholder="Lyrics"
           />
         </div>
         <div>
@@ -116,7 +118,7 @@ class CommentList extends Component {
   render() {
     return (
       <div>
-        {this.props.comments.map((comment, i) =>
+        {this.props.songs.map((comment, i) =>
           <Comment name={comment.name} key={i}>
             {comment.message}
           </Comment>
