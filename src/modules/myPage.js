@@ -52,7 +52,6 @@ handleStartClick(){
 
   console.log('CLICKED IT NIPS!');
 
-  let count
 
 
   // this.timer = setInterval({this.count}, 50);
@@ -183,59 +182,5 @@ class Todo extends Component {
     )
   }
 }
-
-/** @jsx React.DOM */
-
-// Create a custom component by calling React.createClass.
-
-class extends TimerExample Component {
-
-  constructor(props) {
-    super(props);
-    this.componentDidMount = this.componentDidMount.bind(this);
-    this.componentWillUnmount = this.componentWillUnmount.bind(this);
-    this.tick = this.tick.bind(this);
-    return { elapsed: 0 };
-
-  }
-    componentDidMount(){
-
-        // componentDidMount is called by react when the component
-        // has been rendered on the page. We can set the interval here:
-
-        this.timer = setInterval(this.tick, 50);
-    }
-
-    componentWillUnmount() {
-
-        // This method is called immediately before the component is removed
-        // from the page and destroyed. We can clear the interval here:
-
-        clearInterval(this.timer);
-    }
-
-    tick(){
-
-        // This function is called every 50 ms. It updates the
-        // elapsed counter. Calling setState causes the component to be re-rendered
-
-        this.setState({elapsed: new Date() - this.props.start});
-    }
-
-    render() {
-
-      return(
-
-        <div>weorijr</div>
-        var elapsed = Math.round(this.state.elapsed / 100);
-
-
-
-        <p>This example was started <b>{seconds} seconds</b> ago.</p>;
-    ) }
-};
-
-
-
 
 export default MyPage;
