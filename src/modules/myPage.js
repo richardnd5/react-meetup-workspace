@@ -6,24 +6,37 @@ class MyPage extends Component {
     super(props);
     this.state = {
       todos: [
-        {text: 'GOD'}, {text: ''}, {text: ''}, {text: ''},
-        {text: ''}, {text: ''}, {text: ''}, {text: ''},
-        {text: ''}, {text: ''}, {text: ''}, {text: ''},
-        {text: ''}, {text: ''}, {text: ''}, {text: ''},
-        {text: ''}, {text: ''}, {text: ''}, {text: ''},
-        {text: ''}, {text: ''}, {text: ''}, {text: ''},
-        {text: ''}, {text: ''}, {text: ''}, {text: ''},
+
       ]
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTodoClick = this.handleTodoClick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
     this.count = this.count.bind(this);
+    this.addCircles = this.addCircles.bind(this);
+    this.handleStopClick = this.handleStopClick.bind(this);
 
   }
 
+  addCircles() {
+
+    let empty = "";
+
+    this.setState({
+      todos: [
+        ...this.state.todos,
+        {text: ''}
+      ]
+    });
+
+
+
+  }
+
+
   handleSubmit(todo) {
-    console.log('run');
+
     this.setState({
       todos: [
         ...this.state.todos,
@@ -43,20 +56,41 @@ class MyPage extends Component {
     });
 }
 
+countUp() {
+  let counter = 0;
+  counter++
+  c
+}
+
 count() {
-  console.log('lkj')
+let toggle = FALSE;
+  let addCircle = ();
+
+  if toggle = FALSE {
+    let toggle = TRUE;
+    let addCircle = setInterval(this.addCircles, 1000)
+
+
+  }
+
+  let counter = setInterval(this.countUp, 10)
 
 }
 
 handleStartClick(){
 
-  console.log('CLICKED IT NIPS!');
+  // console.log('CLICKED IT NIPS!');
 
-
+  this.count();
+  this.addCircles();
 
   // this.timer = setInterval({this.count}, 50);
 
+}
 
+handleStopClick() {
+
+  console.log('lkj')
 
 }
 
@@ -66,7 +100,9 @@ handleStartClick(){
 
         <h1 style={{textAlign: 'center'}}>Bubble Rhythm</h1>
         <TodoForm handleSubmit={this.handleSubmit}/>
-        <button onClick ={this.handleStartClick}>StArt</button>
+        <button onClick ={this.count}>StArt</button>
+        <button onClick ={this.count}>StOp</button>
+
         <TodoList
           todos={this.state.todos}
           onTodoClick= {this.handleTodoClick}
@@ -156,7 +192,7 @@ class Todo extends Component {
   }
 
   handleClick() {
-    this.props.onClick(this.props.id);
+    this.props.onClick(thi`s.props.id`);
 
   }
 
@@ -165,8 +201,8 @@ class Todo extends Component {
       <div
       onClick={this.handleClick}
       style={
-        {textDecoration: this.props.completed ? 'line-through' : 'none',
-         backgroundColor: this.props.completed ? '#3344CC' : '#44AAEE',
+        {
+          backgroundColor: this.props.completed ? '#3344CC' : '#44AAEE',
           textAlign: 'center',
           width: 40,
           height: 40,
