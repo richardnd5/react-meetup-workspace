@@ -8,23 +8,36 @@ class TodoApp extends Component {
       todos: []
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleTodoClick = this.handleTodoClick.bind(this);
   }
 
-  handleSubmit(input) {
+  handleSubmit(todo) {
+
     this.setState({
       todos: [
         ...this.state.todos,
-        input
+        todo
       ]
     });
   }
+
+  handleTodoClick(todoId) {
+
+    let newTodos = this.state.todos;
+
+    newTodos[todoId].completed = !newTodos[todoId].completed;
+
+    this.setState({
+      todos: newTodos
+    });
+}
 
   render() {
     return (
       <div>
         <h1>Todos</h1>
         <TodoForm handleSubmit={this.handleSubmit}/>
-        <TodoList todos={this.state.todos}/>
+        <TodoList todos={this.state.todos} onTodoClick= {this.handleTodoClick}/>
       </div>
     )
   }
@@ -43,7 +56,10 @@ class TodoForm extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.handleSubmit({text: this.state.text});
+    this.props.handleSubmit({
+      text: this.state.text,
+      completed: false
+    });
     this.setState({
       text: ''
     })
@@ -75,12 +91,19 @@ class TodoForm extends Component {
 // Do the toggle thingy (down below). Turn these babies to stateless.
 
 class TodoList extends Component {
+
   render() {
     return (
       <div>
         {this.props.todos.map( (todo, i) => {
           return (
-            <Todo text={todo.text} key={i} />
+            <Todo
+              text={todo.text}
+              key={i}
+              onClick={this.props.onTodoClick}
+              id={i}
+              completed={todo.completed}
+            />
           )
         })}
       </div>
@@ -90,17 +113,23 @@ class TodoList extends Component {
 
 class Todo extends Component {
 
-  toggleFinish() {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
 
+  handleClick() {
+    this.props.onClick(this.props.id);
 
   }
 
   render() {
     return (
-      <div style={{
-      backgroundColor:'#8888BE',
-      textDecoration:'line-through'
-    }} onClick={this.props.toggleFinish}>
+      <div
+      onClick={this.handleClick}
+      style={
+        {textDecoration: this.props.completed ? 'line-through' : 'none'
+    }} >
         {this.props.text}
       </div>
     )
