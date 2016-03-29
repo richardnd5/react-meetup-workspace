@@ -13,15 +13,13 @@ class MyPage extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTodoClick = this.handleTodoClick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
-    this.count = this.count.bind(this);
-    this.addCircles = this.addCircles.bind(this);
     this.handleStopClick = this.handleStopClick.bind(this);
+    this.addCircles = this.addCircles.bind(this);
+
 
   }
 
   addCircles() {
-
-    let empty = "";
 
     this.setState({
       todos: [
@@ -51,69 +49,47 @@ class MyPage extends Component {
 
     newTodos[todoId].completed = !newTodos[todoId].completed;
 
-    this.setState({
-      todos: newTodos
-    });
-}
+    this.setState({todos: newTodos}); }
 
-countUp() {
-  let counter = 0;
-  counter++
-  c
-}
-
-count() {
-let toggle = FALSE;
-  let addCircle = ();
-
-  if toggle = FALSE {
-    let toggle = TRUE;
-    let addCircle = setInterval(this.addCircles, 1000)
-
-
-  }
-
-  let counter = setInterval(this.countUp, 10)
-
-}
-
-handleStartClick(){
+  handleStartClick() {
 
   // console.log('CLICKED IT NIPS!');
-
-  this.count();
-  this.addCircles();
+    this.addCircles();
 
   // this.timer = setInterval({this.count}, 50);
 
-}
+  }
 
-handleStopClick() {
+  handleStopClick() {
 
-  console.log('lkj')
+    console.log('lkj')
 
-}
+  }
 
   render() {
     return (
       <div>
 
-        <h1 style={{textAlign: 'center'}}>Bubble Rhythm</h1>
+        <h1 style={{
+          position: 'absolute'
+          textAlign: 'center',
+
+        }}>Title</h1>
         <TodoForm handleSubmit={this.handleSubmit}/>
         <button onClick ={this.count}>StArt</button>
         <button onClick ={this.count}>StOp</button>
-
         <TodoList
           todos={this.state.todos}
           onTodoClick= {this.handleTodoClick}
           />
+          <LoopApp />
 
 
 
       </div>
     )
   }
-}
+  }
 
 class TodoForm extends Component {
 
@@ -153,13 +129,11 @@ class TodoForm extends Component {
           onChange={this.handleChange}
           hidden= "true"
         />
-        <input type="submit" />
+        <input type="submit" style= {{textAlign: 'center'}}/>
       </form>
     )
   }
 }
-
-// Do the toggle thingy (down below). Turn these babies to stateless.
 
 class TodoList extends Component {
 
@@ -192,7 +166,7 @@ class Todo extends Component {
   }
 
   handleClick() {
-    this.props.onClick(thi`s.props.id`);
+    this.props.onClick(this.props.id);
 
   }
 
@@ -214,6 +188,61 @@ class Todo extends Component {
           position:'relative'
     }}>
         {this.props.text}
+      </div>
+    )
+  }
+}
+
+class LoopApp extends Component {
+
+  constructor(props) {
+    super(props);
+    let comments = [];
+    for(let i = 1; i <= 20; i++ ) {
+      comments.push({msg: i})
+    }
+    this.state = {
+      comments
+    }
+
+  }
+
+  render() {
+    return (
+      <div
+        style= {{
+          backgroundColor: '#3388EE',
+          borderRadius: '5%',
+          width: '60%'
+        }}
+      >
+
+        {
+          this.state.comments.map((comment, i) => (
+
+              <div
+              style= {{
+
+                display: 'inline-block',
+                verticalAlign: 'middle',
+                lineHeight: 'normal',
+                backgroundColor: '#92DD00',
+                margin: 2,
+                borderRadius: '5%',
+                fontSize: 20,
+                textAlign: 'center',
+                padding: 20,
+                width: 20,
+                height: 20,
+                border: '3px solid #73AD21'
+
+                  }}>
+                {comment.msg}
+              </div>
+
+
+          ))
+        }
       </div>
     )
   }
