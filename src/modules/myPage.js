@@ -71,8 +71,8 @@ class MyPage extends Component {
       <div>
 
         <h1 style={{
-          position: 'absolute'
-          textAlign: 'center',
+          // position: 'absolute',
+          textAlign: 'center'
 
         }}>Title</h1>
         <TodoForm handleSubmit={this.handleSubmit}/>
