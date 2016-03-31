@@ -162,21 +162,6 @@ class TodoList extends Component {
   }
 }
 
-// Styling. Down below is the merging for dynamic styling.
-const styles = {
-  todo: {
-    textAlign: 'center',
-    width: 40,
-    height: 40,
-    float: 'left',
-    margin: 2,
-    marginTop: 20,
-    borderRadius: '50%',
-    color: '#EEEE44',
-    position:'relative'
-  }
-
-}
 class Todo extends Component {
 
   constructor(props) {
