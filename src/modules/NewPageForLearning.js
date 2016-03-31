@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class NewPageForLearning extends Component {
 
   constructor(props) {
@@ -161,6 +162,21 @@ class TodoList extends Component {
   }
 }
 
+// Styling. Down below is the merging for dynamic styling.
+const styles = {
+  todo: {
+    textAlign: 'center',
+    width: 40,
+    height: 40,
+    float: 'left',
+    margin: 2,
+    marginTop: 20,
+    borderRadius: '50%',
+    color: '#EEEE44',
+    position:'relative'
+  }
+
+}
 class Todo extends Component {
 
   constructor(props) {
@@ -177,19 +193,8 @@ class Todo extends Component {
     return (
       <div
       onClick={this.handleClick}
-      style={
-        {
-          backgroundColor: this.props.completed ? '#3344CC' : '#44AAEE',
-          textAlign: 'center',
-          width: 40,
-          height: 40,
-          float: 'left',
-          margin: 2,
-          marginTop: 20,
-          borderRadius: '50%',
-          color: '#EEEE44',
-          position:'relative'
-    }}>
+      style={{...styles.todo,
+        backgroundColor: this.props.completed ? '#3344CC' : '#44AAEE'}}>
         {this.props.text}
       </div>
     )
