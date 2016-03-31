@@ -193,8 +193,17 @@ class Todo extends Component {
     return (
       <div
       onClick={this.handleClick}
-      style={{...styles.todo,
-        backgroundColor: this.props.completed ? '#3344CC' : '#44AAEE'}}>
+      style={{
+          textAlign: 'center',
+          width: 40,
+          height: 40,
+          float: 'left',
+          margin: 2,
+          marginTop: 20,
+          borderRadius: '50%',
+          color: '#EEEE44',
+          position:'relative',
+          backgroundColor: this.props.completed ? '#3344CC' : '#44AAEE'}}>
         {this.props.text}
       </div>
     )
