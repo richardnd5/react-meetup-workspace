@@ -4,11 +4,14 @@ class NewPageForLearning extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      todos: [
+      let todos = []
 
-      ]
-    };
+      for(let i = 1; i <= 200; i++ ) {
+        todos.push({msg: i})
+      }
+      this.state = {
+        todos
+      };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTodoClick = this.handleTodoClick.bind(this);
@@ -82,7 +85,7 @@ class NewPageForLearning extends Component {
           todos={this.state.todos}
           onTodoClick= {this.handleTodoClick}
           />
-          <LoopApp />
+          {/*<LoopApp />*/}
 
 
 
