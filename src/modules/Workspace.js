@@ -11,6 +11,7 @@ function Workspace(props) {
         <Link to="/mypage">Just My Page</Link> {' '}
         <Link to="/lifecounter">Life CouNTER</Link> {' '}
         <Link to="/newpageforlearning">New Learning Page</Link> {' '}
+        <Link to="/timestamp">Bubble Rhythm</Link> {' '}
 
       </nav>
       {props.children}

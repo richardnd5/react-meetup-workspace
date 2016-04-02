@@ -11,6 +11,11 @@ class TodoApp extends Component {
     this.handleTodoClick = this.handleTodoClick.bind(this);
   }
 
+  componentDidMount(){
+    this.timer = setInterval(()=> this.handleSubmit({text:'+', completed: false}), 2000);
+
+  }
+
   handleSubmit(todo) {
 
     this.setState({
@@ -35,7 +40,7 @@ class TodoApp extends Component {
   render() {
     return (
       <div>
-        <h1>Todos</h1>
+        <h1>Interval Additions!</h1>
         <TodoForm handleSubmit={this.handleSubmit}/>
         <TodoList todos={this.state.todos} onTodoClick= {this.handleTodoClick}/>
       </div>
@@ -128,7 +133,12 @@ class Todo extends Component {
       <div
       onClick={this.handleClick}
       style={
-        {textDecoration: this.props.completed ? 'line-through' : 'none'
+        {textDecoration: this.props.completed ? 'line-through' : 'none',
+         background: '#5522EE',
+         width: 30,
+         textAlign: 'center',
+         borderRadius: '50',
+         float: 'left'
     }} >
         {this.props.text}
       </div>

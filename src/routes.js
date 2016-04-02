@@ -8,6 +8,8 @@ import TodoApp from './modules/TodoApp';
 import myPage from './modules/myPage';
 import NewPageForLearning from './modules/NewPageForLearning';
 import LifeCounter from './modules/LifeCounter';
+import TimeStamp from './modules/TimeStamp';
+
 
 
 
@@ -19,5 +21,6 @@ export default (
     <Route path="mypage" component={myPage} />
     <Route path="lifecounter" component={LifeCounter} />
     <Route path="newpageforlearning" component={NewPageForLearning} />
+    <Route path="timestamp" component={TimeStamp} />
   </Route>
 )
