@@ -1,5 +1,6 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var App = require('./App');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Router, browserHistory } from 'react-router';
+import routes from './routes';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<Router routes={routes} history={browserHistory}/>, document.getElementById('root'));
