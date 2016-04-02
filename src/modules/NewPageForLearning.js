@@ -171,6 +171,50 @@ class Todo extends Component {
 
   handleClick() {
     this.props.onClick(this.props.id);
+    this.makeComponent()
+
+  }
+
+  makeComponent() {
+
+    console.log('nice.')
+
+  }
+
+  render() {
+    return (
+      <div
+      onClick={this.handleClick}
+      style={{
+          textAlign: 'center',
+          width: 40,
+          height: 40,
+          float: 'left',
+          margin: 2,
+          marginTop: 20,
+          borderRadius: '50%',
+          color: '#EEEE44',
+          position:'relative',
+          backgroundColor: this.props.completed ? '#3344CC' : '#44AAEE'}}>
+        {this.props.text}
+      </div>
+    )
+  }
+}
+
+class Todo2 extends Component {
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.props.onClick(this.props.id);
+
+  }
+
+  makeComponent() {
 
   }
 
