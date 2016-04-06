@@ -1,45 +1,6 @@
 import React, { Component } from 'react';
 
-class CommentApp extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {comments: [
-      {
-        name: 'Pete Hunt',
-        message: 'this is one comment'
-      },
-      {
-        name: 'Jordan Walke',
-        message: 'this is another comment'
-      }
-    ]}
-    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
-  }
-
-  handleCommentSubmit(comment) {
-
-    const { comments } = this.state;
-
-    const newComments = comments.concat([comment]);
-
-    this.setState({
-      comments: newComments
-    })
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Comments</h1>
-        <CommentForm onCommentSubmit={this.handleCommentSubmit}/>
-        <CommentList comments={this.state.comments}/>
-      </div>
-    );
-  }
-}
-
-class CommentForm extends Component {
+export default class CommentForm extends Component {
 
   constructor(props) {
     super(props);
@@ -111,29 +72,3 @@ class CommentForm extends Component {
     )
   }
 }
-
-class CommentList extends Component {
-  render() {
-    return (
-      <div>
-        {this.props.comments.map((comment, i) =>
-          <Comment name={comment.name} key={i}>
-            {comment.message}
-          </Comment>
-        )}
-      </div>
-    )
-  }
-}
-
-const Comment = ({name, children}) => (
-  <div>
-    <h3>{name}</h3>
-    <p>
-      {children}
-    </p>
-  </div>
-)
-
-
-export default CommentApp;
