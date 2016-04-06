@@ -28,12 +28,9 @@ app.get('/comments', (req, res) => {
 
 app.post('/comments', (req, res) => {
 
-  // const comment = req.
-  // res.send(req)
+  comments.push(req.body);
 
-  console.log(req)
-
-  res.send(req.body)
+  res.send(comments)
 
 })
 
