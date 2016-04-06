@@ -37,12 +37,19 @@ export default class CommentApp extends Component {
   }
 
   handleCommentSubmit(comment) {
+
     fetch('http://localhost:3001/comments', {
       method: 'POST',
-      body: comment
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(comment)
     }).then((res) => res.json())
     .then((res) => {
-      console.log(res);
+      this.setState({
+        comments: res
+      })
     })
   }
 
