@@ -1,30 +1,34 @@
-var React = require('react');
+import React, { Component } from 'react';
 
-var App = React.createClass({
-  getInitialState: function() {
-    return {
-      comments: [
-        {
-          name: 'Pete Hunt',
-          message: 'this is one comment'
-        },
-        {
-          name: 'Jordan Walke',
-          message: 'this is another comment'
-        }
-      ]
-    }
-  },
-  handleCommentSubmit: function(comment) {
-    var comments = this.state.comments;
+class CommentApp extends Component {
 
-    var newComments = comments.concat([comment]);
+  constructor(props) {
+    super(props);
+    this.state = {comments: [
+      {
+        name: 'Pete Hunt',
+        message: 'this is one comment'
+      },
+      {
+        name: 'Jordan Walke',
+        message: 'this is another comment'
+      }
+    ]}
+    this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+  }
+
+  handleCommentSubmit(comment) {
+
+    const { comments } = this.state;
+
+    const newComments = comments.concat([comment]);
 
     this.setState({
       comments: newComments
     })
-  },
-  render: function() {
+  }
+
+  render() {
     return (
       <div>
         <h1>Comments</h1>
@@ -33,26 +37,31 @@ var App = React.createClass({
       </div>
     );
   }
-});
+}
 
-var CommentForm = React.createClass({
-  getInitialState: function() {
-    return {
+class CommentForm extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
       name: '',
       message: '',
       error: ''
     }
-  },
-  handleFieldChange: function(e) {
+    this.handleFieldChange = this.handleFieldChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleFieldChange(e) {
     this.setState({
       [e.target.name]: e.target.value
     })
-  },
-  handleSubmit: function(e) {
+  }
+
+  handleSubmit(e) {
     e.preventDefault();
 
-    var name = this.state.name;
-    var message = this.state.message;
+    const { name, message } = this.state;
 
     if(!message.trim() || !name.trim()) {
       this.setState({
@@ -62,8 +71,8 @@ var CommentForm = React.createClass({
     }
 
     this.props.onCommentSubmit({
-      name: name,
-      message: message
+      name,
+      message
     });
 
     this.setState({
@@ -71,8 +80,8 @@ var CommentForm = React.createClass({
       name: '',
       error: ''
     })
-  },
-  render: function() {
+  }
+  render() {
     return (
       <form onSubmit={this.handleSubmit}>
         {this.state.error}
@@ -101,37 +110,30 @@ var CommentForm = React.createClass({
       </form>
     )
   }
-});
+}
 
-var CommentList = React.createClass({
-  render: function() {
+class CommentList extends Component {
+  render() {
     return (
       <div>
-        {this.props.comments.map(function(comment, i) {
-          return (
-            <Comment name={comment.name} key={i}>
-              {comment.message}
-            </Comment>
-          );
-        })}
+        {this.props.comments.map((comment, i) =>
+          <Comment name={comment.name} key={i}>
+            {comment.message}
+          </Comment>
+        )}
       </div>
     )
   }
-});
+}
 
-var Comment = React.createClass({
-  render: function() {
-    return (
-      <div>
-        <h3>{this.props.name}</h3>
-        <p>
-          {this.props.children}
-        </p>
-      </div>
-    );
-  }
-});
+const Comment = ({name, children}) => (
+  <div>
+    <h3>{name}</h3>
+    <p>
+      {children}
+    </p>
+  </div>
+)
 
 
-
-module.exports = App;
+export default CommentApp;
