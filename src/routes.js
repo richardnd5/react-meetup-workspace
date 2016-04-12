@@ -5,6 +5,7 @@ import Workspace from './modules/Workspace';
 import Home from './modules/Home';
 import CommentApp from './modules/comments/CommentApp';
 import TodoApp from './modules/TodoApp';
+import SolfegeApp from './modules/solfege/SolfegeApp';
 
 
 export default (
@@ -12,5 +13,6 @@ export default (
     <IndexRoute component={Home}/>
     <Route path="comment" component={CommentApp}/>
     <Route path="todo" component={TodoApp} />
+    <Route path="solfege" component={SolfegeApp} />
   </Route>
 )
