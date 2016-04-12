@@ -1,4 +1,6 @@
 import React from 'react';
+import SolfegeButton from './SolfegeButton';
+import SolfegeContainer from './SolfegeContainer'
 
 function FreshStartApp(props) {
   return (
@@ -8,7 +10,13 @@ function FreshStartApp(props) {
         background: 'yellow',
         color:'blue'}}>
 
-        Front Page</h1>
+        Fresh STaRt</h1>
+        <div style={{
+          background: '#44EEBB'
+          }}>
+        <SolfegeContainer style={{
+          background: '#44EEBB',
+        }}/> </div>
 
     </div>
   )
