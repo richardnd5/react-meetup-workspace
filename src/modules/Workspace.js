@@ -9,6 +9,8 @@ function Workspace(props) {
         <Link to="/comment">Comment</Link>{' '}
         <Link to="/todo">Todo</Link>
         <Link to="/solfege">Solfege</Link>
+        <Link to="/freshStart">Fresh Start</Link>
+
       </nav>
       {props.children}
     </div>

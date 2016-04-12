@@ -6,6 +6,7 @@ import Home from './modules/Home';
 import CommentApp from './modules/comments/CommentApp';
 import TodoApp from './modules/TodoApp';
 import SolfegeApp from './modules/solfege/SolfegeApp';
+import FreshStartApp from './modules/FreshStart/FreshStartApp';
 
 
 export default (
@@ -14,5 +15,6 @@ export default (
     <Route path="comment" component={CommentApp}/>
     <Route path="todo" component={TodoApp} />
     <Route path="solfege" component={SolfegeApp} />
+    <Route path="freshStart" component={FreshStartApp} />
   </Route>
 )
