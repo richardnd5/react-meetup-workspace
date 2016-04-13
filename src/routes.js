@@ -5,8 +5,8 @@ import Workspace from './modules/Workspace';
 import Home from './modules/Home';
 import CommentApp from './modules/comments/CommentApp';
 import TodoApp from './modules/TodoApp';
+import CircleCentral from './modules/circles/CircleCentral';
 import SolfegeApp from './modules/solfege/SolfegeApp';
-import FreshStartApp from './modules/FreshStart/FreshStartApp';
 
 
 export default (
@@ -14,7 +14,7 @@ export default (
     <IndexRoute component={Home}/>
     <Route path="comment" component={CommentApp}/>
     <Route path="todo" component={TodoApp} />
+    <Route path="circleCentral" component={CircleCentral} />
     <Route path="solfege" component={SolfegeApp} />
-    <Route path="freshStart" component={FreshStartApp} />
   </Route>
 )
