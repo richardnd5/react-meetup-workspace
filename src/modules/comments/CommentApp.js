@@ -4,27 +4,42 @@ class CommentApp extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {comments: [
-      {
-        name: 'Pete Hunt',
-        message: 'this is one comment'
-      },
-      {
-        name: 'Jordan Walke',
-        message: 'this is another comment'
-      }
-    ]}
+    this.state = {
+      comments: [
+      ]
+    }
     this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
+    this.fetchComments = this.fetchComments.bind(this);
+  }
+
+  componentDidMount() {
+    // Fetch data
+    this.fetchComments()
+  }
+
+  fetchComments() {
+    fetch('http://localhost:3001/comments')
+      .then((res) => res.json())
+      .then((comments) => {
+        this.setState({
+          comments
+        })
+      })
   }
 
   handleCommentSubmit(comment) {
-
-    const { comments } = this.state;
-
-    const newComments = comments.concat([comment]);
-
-    this.setState({
-      comments: newComments
+    fetch('http://localhost:3001/comments', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(comment)
+    }).then((res) => res.json())
+    .then((comments) => {
+      this.setState({
+        comments
+      })
     })
   }
 
