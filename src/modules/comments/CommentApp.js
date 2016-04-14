@@ -36,9 +36,12 @@ class CommentApp extends Component {
       },
       body: JSON.stringify(comment)
     }).then((res) => res.json())
-    .then((comments) => {
+    .then((comment) => {
       this.setState({
-        comments
+        comments: [
+          ...this.state.comments,
+          comment
+        ]
       })
     })
   }
