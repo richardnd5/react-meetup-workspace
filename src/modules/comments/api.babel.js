@@ -1,5 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import Comment from './Comment';
 
 const app = express();
 
@@ -13,23 +15,25 @@ app.use(function(req, res, next) {
   next();
 });
 
-let comments = [
-  {
-    name: 'Pete Hunt',
-    message: 'Api Comment'
-  }
-]
+mongoose.connect('mongodb://localhost:27017/react-meetup', (err) => {
+  if(err) console.error(err);
+  console.log('Connect to mongo');
+});
 
 app.get('/comments', (req, res) => {
-  console.log('get /comments');
-  console.log(comments)
-  res.send(comments)
+  Comment.find().exec((err, comments) => {
+    if(err) return res.send(err);
+    res.send(comments);
+  })
 })
 
 app.post('/comments', (req, res) => {
-  comments.push(req.body)
+  let comment = new Comment(req.body)
 
-  res.send(comments);
+  comment.save((err, comment) => {
+    if(err) return res.send(err);
+    res.send(comment);
+  })
 })
 
 app.listen(PORT, (err) => {
