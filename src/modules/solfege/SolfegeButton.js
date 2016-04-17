@@ -1,7 +1,6 @@
 // import React from 'react';
 import React, { Component } from 'react';
 
-
 // export default class BiggerClick extends Component {
 
 export default class SolfegeButton extends Component {
@@ -14,6 +13,7 @@ export default class SolfegeButton extends Component {
 
   handleClick(){
     console.log(this.props.text);
+
   }
 
   render(){
