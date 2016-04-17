@@ -9,6 +9,7 @@ export default class SolfegeButton extends Component {
   constructor(props){
     super(props);
     this.handleClick = this.handleClick.bind(this);
+
   }
 
   handleClick(){
@@ -20,27 +21,17 @@ export default class SolfegeButton extends Component {
     return(
 
       <div style= {{
-        background: 'red',
-        width: 40,
-        height: 40,
+        background: this.props.color,
+        width: 60,
+        height: 60,
         borderRadius: "5%",
         margin: 3,
-        display: 'inline-block',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }} onClick= {this.handleClick}>
-        <div style= {{
-          textAlign: 'center',
-          verticalAlign: 'middle',
-          lineHeight: '40px',}}> {this.props.text}
-
-          </div>
-
-      </div>
+        {this.props.text}</div>
 
     )
   }
 }
-// const SolfegeButton = ({name}) => (
-//
-// )
-//
-// export default SolfegeButton;

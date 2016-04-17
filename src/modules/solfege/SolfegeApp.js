@@ -13,21 +13,19 @@ export default class SolfegeApp extends Component {
     <div>
       <h1 style= {{
         textAlign: 'center',
-        background: '#44EEBB',
-        color:'blue'}}>
+        color:'black'}}>
         What a Nice Solfege Area</h1>
-        <h2>Clicking On a Solfege Button Writes It's Text to the Console</h2>
         <div style={{
-          background: '#44EEBB',
-          textAlign: 'center'
+          textAlign: 'center',
+          border: 'solid black 1px'
           }}>
-          <SolfegeButton text='Do'/>
-          <SolfegeButton text='Re'/>
-          <SolfegeButton text='Mi'/>
-          <SolfegeButton text='Fa'/>
-          <SolfegeButton text='So'/>
-          <SolfegeButton text='La'/>
-          <SolfegeButton text='Ti'/>
+          <SolfegeButton text='Do' color='#ff0000'/>
+          <SolfegeButton text='Re' color='#ff751a'/>
+          <SolfegeButton text='Mi' color='#ffff00'/>
+          <SolfegeButton text='Fa' color='#47d147'/>
+          <SolfegeButton text='So' color='#2d864d'/>
+          <SolfegeButton text='La' color='#4477DD'/>
+          <SolfegeButton text='Ti' color='#cc0099'/>
           </div>
 
         <BiggerClick/>
