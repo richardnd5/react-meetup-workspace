@@ -7,6 +7,7 @@ import CommentApp from './modules/comments/CommentApp';
 import TodoApp from './modules/TodoApp';
 import CircleCentral from './modules/circles/CircleCentral';
 import SolfegeApp from './modules/solfege/SolfegeApp';
+import SolfegeHomePage from './modules/solfege/SolfegeHomePage';
 
 
 export default (
@@ -16,5 +17,6 @@ export default (
     <Route path="todo" component={TodoApp} />
     <Route path="circleCentral" component={CircleCentral} />
     <Route path="solfege" component={SolfegeApp} />
+    <Route path="solfegeHomePage" component={SolfegeHomePage} />
   </Route>
 )

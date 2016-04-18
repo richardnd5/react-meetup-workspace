@@ -34,6 +34,28 @@ app.post('/comments', (req, res) => {
 
 })
 
+let lyricData = [
+  {
+    title: 'Whereio',
+    artist: 'Jontly Bechem',
+    lyrics: 'what kind of road is this?'
+  }
+]
+
+app.get('/lyricData', (req, res) => {
+
+  res.send(lyricData)
+
+})
+
+app.post('/lyricData', (req, res) => {
+
+  lyricData.push(req.body);
+
+  res.send(lyricData)
+
+})
+
 app.listen(PORT, (err) => {
   if(err) {
     console.error(err)

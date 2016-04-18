@@ -5,8 +5,9 @@ export default class InputSolfegeForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      message: '',
+      title: '',
+      artist: '',
+      lyrics: '',
       error: ''
     }
     this.handleFieldChange = this.handleFieldChange.bind(this);
@@ -22,9 +23,9 @@ export default class InputSolfegeForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    const { name, message } = this.state;
+    const { title, artist, lyrics } = this.state;
 
-    if(!message.trim() || !name.trim()) {
+    if(!artist.trim() || !title.trim() || !lyrics.trim()) {
       this.setState({
         error: 'You have to fill in all fields!'
       })
@@ -32,13 +33,15 @@ export default class InputSolfegeForm extends Component {
     }
 
     this.props.onCommentSubmit({
-      name,
-      message
+      title,
+      artist,
+      lyrics
     });
 
     this.setState({
-      message: '',
-      name: '',
+      artist: '',
+      title: '',
+      lyrics: '',
       error: ''
     })
   }
@@ -55,24 +58,24 @@ export default class InputSolfegeForm extends Component {
         <div style={{margin: 5}}>
           <input
             type="text"
-            name="name"
-            value={this.state.name}
+            name="title"
+            value={this.state.title}
             onChange={this.handleFieldChange}
-            placeholder="Title"
+            placeholder="Title of Song"
           />
         </div>
         <div style={{margin: 5}}>
           <input
             type="text"
-            name="message"
-            value={this.state.message}
+            name="artist"
+            value={this.state.artist}
             onChange={this.handleFieldChange}
             placeholder="Artist Name"
           />
         </div>
         <div style={{margin: 5}}>
           <input
-            type="textarea"
+            type="textArea"
             name="lyrics"
             value={this.state.lyrics}
             onChange={this.handleFieldChange}
