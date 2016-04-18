@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import BiggerClick from './BiggerClick'
-import SolfegeButton from './SolfegeButton'
+import BiggerClick from './BiggerClick';
+import SolfegeButton from './SolfegeButton';
 
 export default class SolfegeApp extends Component {
 
