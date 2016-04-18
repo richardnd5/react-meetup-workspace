@@ -19,7 +19,7 @@ export default class SolfegeApp extends Component {
           textAlign: 'center',
           border: 'solid black 1px'
           }}>
-          <SolfegeButton text='Do' color='#ff0000'/>
+          <SolfegeButton text='Mo' color='#ff0000'/>
           <SolfegeButton text='Re' color='#ff751a'/>
           <SolfegeButton text='Mi' color='#ffff00'/>
           <SolfegeButton text='Fa' color='#47d147'/>
@@ -29,10 +29,6 @@ export default class SolfegeApp extends Component {
           </div>
 
         <BiggerClick/>
-
-
-
-
 
     </div>
   )}
