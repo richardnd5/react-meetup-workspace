@@ -24,7 +24,7 @@ export default class SolfegeButton extends Component {
         background: this.props.color,
         width: 60,
         height: 60,
-        borderRadius: "5%",
+        borderRadius: '5%',
         margin: 3,
         display: 'inline-flex',
         alignItems: 'center',

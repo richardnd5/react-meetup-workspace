@@ -5,7 +5,6 @@ import Workspace from './modules/Workspace';
 import Home from './modules/home/Home';
 import SolfegeApp from './modules/solfege/SolfegeApp';
 
-
 export default (
   <Route path="/" component={Workspace}>
     <IndexRoute component={Home}/>
