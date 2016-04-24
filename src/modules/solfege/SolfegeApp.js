@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BiggerClick from './BiggerClick'
 import SolfegeButton from './SolfegeButton'
+import WordContainer from './WordContainer'
 
 export default class SolfegeApp extends Component {
 
@@ -19,7 +20,7 @@ export default class SolfegeApp extends Component {
           textAlign: 'center',
           border: 'solid black 1px'
           }}>
-          <SolfegeButton text='Momo' color='#ff0000'/>
+          <SolfegeButton text='Do' color='#ff0000'/>
           <SolfegeButton text='Re' color='#ff751a'/>
           <SolfegeButton text='Mi' color='#ffff00'/>
           <SolfegeButton text='Fa' color='#47d147'/>
@@ -27,9 +28,18 @@ export default class SolfegeApp extends Component {
           <SolfegeButton text='La' color='#4477DD'/>
           <SolfegeButton text='Ti' color='#cc0099'/>
           </div>
-
-        <BiggerClick/>
-
+        <div style={{
+          textAlign: 'center',
+          border: 'solid black 1px',
+          marginTop: '100'
+          }}>
+          <p>These are my beautiful word containers</p>
+          <WordContainer />
+          <WordContainer />
+          <WordContainer />
+          <WordContainer />
+          <WordContainer />
+        </div>
     </div>
   )}
 }
