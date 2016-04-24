@@ -55,7 +55,7 @@ export default class InputSolfegeForm extends Component {
 }}>
       <form onSubmit={this.handleSubmit}>
         {this.state.error}
-        <div style={{margin: 5}}>
+        <div style={{margin: 5, width: '30%', paddingLeft: '30%'}}>
           <input
             type="text"
             name="title"
