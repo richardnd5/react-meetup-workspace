@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SignupForm from './SignupForm';
 import LogInForm from './LogInForm';
+import InputSolfegeForm from './InputSolfegeForm.js';
+
 
 export default class Home extends Component {
 
@@ -76,10 +78,7 @@ export default class Home extends Component {
   return (
     <div>
       <h1>Welcome To The Solfege Site Baby!</h1>
-      <p>Sign Up</p>
-      <SignupForm onSignUpSubmit={this.handleSignUpSubmit}/>
-      <p>Log In</p>
-      <LogInForm onSignUpSubmit={this.handleLogInSubmit}/>
+      <InputSolfegeForm />
     </div>
   )
 }

@@ -31,7 +31,6 @@ export default class SolfegeButton extends Component {
         justifyContent: 'center'
       }} onClick= {this.handleClick}>
         {this.props.text}</div>
-
     )
   }
 }
