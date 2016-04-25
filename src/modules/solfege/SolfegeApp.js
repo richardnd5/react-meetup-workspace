@@ -11,29 +11,32 @@ export default class SolfegeApp extends Component {
     super(props);
 
     this.state = {
-      wordContainers: ['I', 'like', 'pyjamas']
+      title: 'Catchy Title',
+      artist: 'Really Cool Artist',
+      wordArray: ['These', 'are', 'some', 'awesome', 'default', 'lyrics'],
+      wordContainers: []
     };
 
     this.handleLyricsSubmit = this.handleLyricsSubmit.bind(this);
     this.handleWordClick = this.handleWordClick.bind(this);
   }
 
-  handleLyricsSubmit(wordContainer) {
+  handleLyricsSubmit(song) {
 
-    console.log(wordContainer)
+    console.log(song)
 
     // var lyricsNoBreaks = wordContainer.lyrics.replace(/\n/g, " [br] ");
     // //create an array with each lyric word as an element
-    var wordArray = wordContainer.lyrics.split(' ');
+    var wordArray = song.lyrics.split(' ');
     console.log(wordArray);
 
     this.setState({
-      wordContainers: wordArray
+      title: song.title,
+      artist: song.artist,
+      wordArray: wordArray
     });
 
     console.log(this.state);
-
-
   }
 
   handleWordClick(wordId) {
@@ -52,14 +55,9 @@ export default class SolfegeApp extends Component {
     return(
     <div>
 
-      <h1 style= {{
-        textAlign: 'center',
-        color:'black'}}>
-        Solfege Your Lyrics</h1>
+      <h1>Solfege Your Lyrics</h1>
 
-      <div style={{
-        textAlign: 'center',
-        }}>
+      <div>
         <SolfegeButton text='Do' color='#ff0000'/>
         <SolfegeButton text='Re' color='#ff751a'/>
         <SolfegeButton text='Mi' color='#ffff00'/>
@@ -69,7 +67,24 @@ export default class SolfegeApp extends Component {
         <SolfegeButton text='Ti' color='#cc0099'/>
       </div>
 
-      <LyricsContainer wordContainers={this.state.wordContainers} onWordClick={this.handleWordClick}/>
+      <div>
+        <div style={{
+          marginTop: '40'
+          }}>
+          <p style={{margin: 5}}><b>{this.state.title}</b> by {this.state.artist}</p>
+
+            {this.state.wordArray.map( (word, i) => {
+              return (
+                <WordContainer
+                  text={word}
+                  onClick={this.handleWordClick}
+                  key={i}
+                  id={i}
+                />
+              )
+            })}
+        </div>
+      </div>
 
       <InputForm onLyricsSubmit={this.handleLyricsSubmit} />
 
@@ -88,7 +103,7 @@ class LyricsContainer extends Component {
           }}>
           <p>These are my beautiful word containers</p>
 
-            {this.props.wordContainers.map( (word, i) => {
+            {this.props.words.map( (word, i) => {
               return (
                 <WordContainer
                   text={word}
@@ -98,7 +113,6 @@ class LyricsContainer extends Component {
                 />
               )
             })}
-
         </div>
     </div>
 

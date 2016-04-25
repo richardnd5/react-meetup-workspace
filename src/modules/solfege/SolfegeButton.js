@@ -28,7 +28,8 @@ export default class SolfegeButton extends Component {
         margin: 3,
         display: 'inline-flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        cursor: 'pointer'
       }} onClick= {this.handleClick}>
         {this.props.text}</div>
     )

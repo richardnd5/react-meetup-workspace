@@ -7,8 +7,7 @@ class LyricsContainer extends Component {
       <div>
         <div style={{
           textAlign: 'center',
-          border: 'solid black 1px',
-          marginTop: '10'
+          marginTop: '80'
           }}>
           <p>These are my beautiful word containers</p>
 
@@ -25,7 +24,6 @@ class LyricsContainer extends Component {
 
         </div>
     </div>
-
     )
   }
 }

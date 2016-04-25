@@ -15,18 +15,18 @@ export default class WordContainer extends Component {
 
   render() {
     return (
-      <div style= {{
-        border: 'solid blue 1px',
-        borderRadius: '5%',
-        margin: 5,
-        padding: 5,
-        display: 'inline-block',
-        cursor: 'pointer',
-      }} onClick={this.handleClick}>
-
-        <div>
-          {this.props.text}
-        </div>
+      <div
+        onClick={this.handleClick}
+        style= {{
+          border: 'solid blue 1px',
+          borderRadius: '5%',
+          margin: 5,
+          padding: 5,
+          display: 'inline-block',
+          cursor: 'pointer',
+        }}>
+        <div>-</div>
+        <div>{this.props.text}</div>
 
       </div>
       )

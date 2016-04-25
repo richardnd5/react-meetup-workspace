@@ -49,10 +49,9 @@ export default class InputForm extends Component {
   render() {
     return (
       <div style={{
-        border: 'solid black 1px',
-        margin: 3,
-        width: '50%'
-      }}>
+          width: 300,
+          marginTop: 40,
+        }}>
       <form onSubmit={this.handleSubmit}>
         {this.state.error}
         <div>
@@ -62,6 +61,7 @@ export default class InputForm extends Component {
             value={this.state.title}
             onChange={this.handleFieldChange}
             placeholder="Title of Song"
+            style={{width: '100%'}}
           />
         </div>
         <div>
@@ -71,18 +71,20 @@ export default class InputForm extends Component {
             value={this.state.artist}
             onChange={this.handleFieldChange}
             placeholder="Artist Name"
+            style={{width: '100%'}}
           />
         </div>
         <div>
-          <input
+          <textarea
             type="textArea"
             name="lyrics"
             value={this.state.lyrics}
             onChange={this.handleFieldChange}
             placeholder="Type Lyrics Here!"
             style={{
-              width: '70%',
-              height: 50
+              width: '100%',
+              height: 80,
+              resize: 'none'
             }}
           />
         </div>
