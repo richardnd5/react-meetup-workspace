@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class TodoApp extends Component {
+class AddWord extends Component {
 
   constructor(props) {
     super(props);
@@ -36,7 +36,6 @@ class TodoApp extends Component {
   render() {
     return (
       <div>
-        <h1>Todos</h1>
         <TodoForm handleSubmit={this.handleSubmit}/>
         <TodoList todos={this.state.todos} onTodoClick={this.handleTodoClick}/>
       </div>
@@ -123,24 +122,12 @@ class Todo extends Component {
   render() {
     return (
       <div onClick={this.handleClick} style={
-        {textDecoration: this.props.completed ? 'line-through' : 'none', float: 'left'}}>
-        {/*
+        {textDecoration: this.props.completed ? 'line-through' : 'none', display: 'inline-block', paddingRight: '4'}}>
 
-
-
-          if(this.props.completed){
-            line-through
-          }else {
-            none
-          }
-
-
-
-      */}
         {this.props.text}
       </div>
     )
   }
 }
 
-export default TodoApp;
+export default AddWord;
