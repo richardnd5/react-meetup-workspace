@@ -12,13 +12,13 @@ class TodoApp extends Component {
   }
 
   handleSubmit(todo) {
-
     this.setState({
       todos: [
         ...this.state.todos,
         todo
       ]
     });
+    console.log(this.state);
   }
 
   handleTodoClick(todoId) {
@@ -122,7 +122,8 @@ class Todo extends Component {
   render() {
     return (
       <div onClick={this.handleClick} style={
-        {textDecoration: this.props.completed ? 'line-through' : 'none'}}>
+        {textDecoration: this.props.completed ? 'line-through' : 'none',
+        cursor: 'pointer'}}>
         {this.props.text}
       </div>
     )

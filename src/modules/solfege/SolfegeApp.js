@@ -11,14 +11,14 @@ export default class SolfegeApp extends Component {
     super(props);
 
     this.state = {
-      title: 'Catchy Title',
-      artist: 'Really Cool Artist',
-      wordArray: ['These', 'are', 'some', 'awesome', 'default', 'lyrics'],
-      wordContainers: []
+      title: '',
+      artist: '',
+      wordContainers: [],
     };
 
     this.handleLyricsSubmit = this.handleLyricsSubmit.bind(this);
     this.handleWordClick = this.handleWordClick.bind(this);
+    this.handleSolfegeClick = this.handleSolfegeClick.bind(this);
   }
 
   handleLyricsSubmit(song) {
@@ -30,41 +30,68 @@ export default class SolfegeApp extends Component {
     var wordArray = song.lyrics.split(' ');
     console.log(wordArray);
 
+    var wordContainerArray = [];
+
+    wordArray.map( (word, i) => {
+      wordContainerArray.push({
+        solfege: '-',
+        text: word,
+        selected: false,
+      })
+
+    })
+
     this.setState({
       title: song.title,
       artist: song.artist,
-      wordArray: wordArray
-    });
+      wordContainers: wordContainerArray
+    })
 
     console.log(this.state);
   }
 
   handleWordClick(wordId) {
 
-    // let newTodos = this.state.todos;
-    //
-    // newTodos[todoId].completed = !newTodos[todoId].completed;
-    //
-    // this.setState({
-    //   todos: newTodos
-    // });
+    let newArrayOfWordContainers = this.state.wordContainers;
+    console.log(this.state.wordContainers)
+
+
+    newArrayOfWordContainers.map( (wordContainer) => {
+      wordContainer.selected = false
+    })
+
+    newArrayOfWordContainers[wordId].selected = !newArrayOfWordContainers[wordId].selected;
+
+    this.setState({
+      todos: newArrayOfWordContainers
+    });
     console.log(wordId)
+  }
+
+  handleSolfegeClick(theText) {
+
+    this.state.wordContainers.map( (wordContainer) => {
+      if (wordContainer.selected) {
+        wordContainer.solfege = 'Hey'
+        console.log(wordContainer.text)
+      }
+    })
   }
 
   render(){
     return(
     <div>
 
-      <h1>Solfege Your Lyrics</h1>
+      <h1>Solfege Your Lyrics honey</h1>
 
       <div>
-        <SolfegeButton text='Do' color='#ff0000'/>
-        <SolfegeButton text='Re' color='#ff751a'/>
-        <SolfegeButton text='Mi' color='#ffff00'/>
-        <SolfegeButton text='Fa' color='#47d147'/>
-        <SolfegeButton text='So' color='#2d864d'/>
-        <SolfegeButton text='La' color='#4477DD'/>
-        <SolfegeButton text='Ti' color='#cc0099'/>
+        <SolfegeButton text='Do' color='#ff0000' onClick={this.handleSolfegeClick} />
+        <SolfegeButton text='Re' color='#ff751a' onClick={this.handleSolfegeClick}/>
+        <SolfegeButton text='Mi' color='#ffff00' onClick={this.handleSolfegeClick}/>
+        <SolfegeButton text='Fa' color='#47d147' onClick={this.handleSolfegeClick}/>
+        <SolfegeButton text='So' color='#2d864d' onClick={this.handleSolfegeClick}/>
+        <SolfegeButton text='La' color='#4477DD' onClick={this.handleSolfegeClick}/>
+        <SolfegeButton text='Ti' color='#cc0099' onClick={this.handleSolfegeClick}/>
       </div>
 
       <div>
@@ -73,13 +100,15 @@ export default class SolfegeApp extends Component {
           }}>
           <p style={{margin: 5}}><b>{this.state.title}</b> by {this.state.artist}</p>
 
-            {this.state.wordArray.map( (word, i) => {
+            {this.state.wordContainers.map( (wordContainer, i) => {
               return (
                 <WordContainer
-                  text={word}
+                  text={wordContainer.text}
+                  solfege={wordContainer.solfege}
                   onClick={this.handleWordClick}
                   key={i}
                   id={i}
+                  selected={wordContainer.selected}
                 />
               )
             })}
@@ -87,6 +116,8 @@ export default class SolfegeApp extends Component {
       </div>
 
       <InputForm onLyricsSubmit={this.handleLyricsSubmit} />
+
+    <TodoApp />
 
     </div>
   )}
