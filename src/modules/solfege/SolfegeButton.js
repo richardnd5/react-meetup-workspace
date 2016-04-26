@@ -13,7 +13,7 @@ export default class SolfegeButton extends Component {
 
   handleClick(){
     // console.log(this.props.text);
-    this.props.onClick(this.props.text);
+    this.props.onClick(this.props.text, this.props.color);
 
   }
 

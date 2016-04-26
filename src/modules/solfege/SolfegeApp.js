@@ -22,23 +22,17 @@ export default class SolfegeApp extends Component {
   }
 
   handleLyricsSubmit(song) {
-
-    console.log(song)
-
     // var lyricsNoBreaks = wordContainer.lyrics.replace(/\n/g, " [br] ");
     // //create an array with each lyric word as an element
     var wordArray = song.lyrics.split(' ');
-    console.log(wordArray);
-
     var wordContainerArray = [];
 
     wordArray.map( (word, i) => {
       wordContainerArray.push({
-        solfege: '-',
+        solfege: [],
         text: word,
         selected: false,
       })
-
     })
 
     this.setState({
@@ -47,7 +41,6 @@ export default class SolfegeApp extends Component {
       wordContainers: wordContainerArray
     })
 
-    console.log(this.state);
   }
 
   handleWordClick(wordId) {
@@ -63,18 +56,23 @@ export default class SolfegeApp extends Component {
     newArrayOfWordContainers[wordId].selected = !newArrayOfWordContainers[wordId].selected;
 
     this.setState({
-      todos: newArrayOfWordContainers
+      wordContainers: newArrayOfWordContainers
     });
-    console.log(wordId)
   }
 
-  handleSolfegeClick(theText) {
+  handleSolfegeClick(theText, theColor) {
 
     this.state.wordContainers.map( (wordContainer) => {
       if (wordContainer.selected) {
-        wordContainer.solfege = 'Hey'
-        console.log(wordContainer.text)
+        wordContainer.solfege.push({
+          text: theText,
+          color: theColor
+        })
       }
+    })
+
+    this.setState({
+        wordContainers: this.state.wordContainers
     })
   }
 

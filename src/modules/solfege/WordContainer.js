@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SolfegeContainer from './SolfegeContainer';
+import TodoApp from './Todo';
 
 export default class WordContainer extends Component {
 
@@ -21,6 +22,10 @@ export default class WordContainer extends Component {
     this.props.onClick(this.props.id);
   }
 
+  myFunciton() {
+    console.log('you Diet Iet')
+  }
+
   render() {
     return (
       <div
@@ -33,8 +38,17 @@ export default class WordContainer extends Component {
           display: 'inline-block',
           cursor: 'pointer',
         }}>
-        {/*<div>{this.props.solfege}</div>*/}
-        <SolfegeContainer />
+        <div>
+          {this.props.solfege.map( (syl, i) => {
+            return (
+              <span style={{
+                color: syl.color,
+                padding: 3}}>
+                {syl.text}
+              </span>
+            )
+          })}
+        </div>
         <div>{this.props.text}</div>
 
       </div>
