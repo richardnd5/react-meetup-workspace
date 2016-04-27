@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SolfegeContainer from './SolfegeContainer';
 import TodoApp from './Todo';
 
 export default class WordContainer extends Component {
@@ -31,7 +30,7 @@ export default class WordContainer extends Component {
       <div
         onClick={this.handleClick}
         style= {{
-          border: this.props.selected ? 'solid red 3px' : 'solid blue 1px',
+          background: this.props.selected ? '#ccc' : '#eee',
           borderRadius: '5%',
           margin: 5,
           padding: 5,

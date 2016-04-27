@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import SolfegeButton from './SolfegeButton'
+import DeleteButton from './deleteButton'
 import WordContainer from './WordContainer'
 import InputForm from './inputForm'
-import TodoApp from './Todo'
 // import LyricsContainer from './lyricsContainer'
 
 export default class SolfegeApp extends Component {
@@ -19,6 +19,7 @@ export default class SolfegeApp extends Component {
     this.handleLyricsSubmit = this.handleLyricsSubmit.bind(this);
     this.handleWordClick = this.handleWordClick.bind(this);
     this.handleSolfegeClick = this.handleSolfegeClick.bind(this);
+    this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
   handleLyricsSubmit(song) {
@@ -76,20 +77,34 @@ export default class SolfegeApp extends Component {
     })
   }
 
+  handleDeleteClick() {
+
+    this.state.wordContainers.map( (wordContainer) => {
+      if (wordContainer.selected) {
+        wordContainer.solfege.pop()
+      }
+    })
+
+    this.setState({
+        wordContainers: this.state.wordContainers
+    })
+  }
+
   render(){
     return(
     <div>
 
-      <h1>Solfege Your Lyrics honey</h1>
+      <h1>Solfege Your Lyrics</h1>
 
       <div>
         <SolfegeButton text='Do' color='#ff0000' onClick={this.handleSolfegeClick} />
-        <SolfegeButton text='Re' color='#ff751a' onClick={this.handleSolfegeClick}/>
-        <SolfegeButton text='Mi' color='#ffff00' onClick={this.handleSolfegeClick}/>
-        <SolfegeButton text='Fa' color='#47d147' onClick={this.handleSolfegeClick}/>
-        <SolfegeButton text='So' color='#2d864d' onClick={this.handleSolfegeClick}/>
-        <SolfegeButton text='La' color='#4477DD' onClick={this.handleSolfegeClick}/>
-        <SolfegeButton text='Ti' color='#cc0099' onClick={this.handleSolfegeClick}/>
+        <SolfegeButton text='Re' color='#ff751a' onClick={this.handleSolfegeClick} />
+        <SolfegeButton text='Mi' color='#ffff00' onClick={this.handleSolfegeClick} />
+        <SolfegeButton text='Fa' color='#47d147' onClick={this.handleSolfegeClick} />
+        <SolfegeButton text='So' color='#2d864d' onClick={this.handleSolfegeClick} />
+        <SolfegeButton text='La' color='#4477DD' onClick={this.handleSolfegeClick} />
+        <SolfegeButton text='Ti' color='#cc0099' onClick={this.handleSolfegeClick} />
+        <SolfegeButton text='Delete' color='gray' onClick={this.handleDeleteClick} />
       </div>
 
       <div>
@@ -115,36 +130,6 @@ export default class SolfegeApp extends Component {
 
       <InputForm onLyricsSubmit={this.handleLyricsSubmit} />
 
-    <TodoApp />
-
     </div>
   )}
-}
-
-class LyricsContainer extends Component {
-  render() {
-    return (
-      <div>
-        <div style={{
-          textAlign: 'center',
-          border: 'solid black 1px',
-          marginTop: '10'
-          }}>
-          <p>These are my beautiful word containers</p>
-
-            {this.props.words.map( (word, i) => {
-              return (
-                <WordContainer
-                  text={word}
-                  onClick={this.props.onWordClick}
-                  key={i}
-                  id={i}
-                />
-              )
-            })}
-        </div>
-    </div>
-
-    )
-  }
 }
