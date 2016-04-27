@@ -1,37 +1,20 @@
 import React, {Component} from 'react';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as counterActions from '../actions/counterActions';
 
-class CounterApp extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      value: 0
-    }
-    this.increment = this.increment.bind(this);
-    this.decrement = this.decrement.bind(this);
-  }
+const CounterApp = ({state, actions}) => (
+  <div>
+    <h1>Counter</h1>
+    <h3>{state.value}</h3>
+    <button onClick={() => actions.increment()}>Inc</button>
+    <button onClick={() => actions.decrement()}>Dec</button>
+  </div>
+)
 
-  increment() {
-    this.setState({
-      value: this.state.value + 1
-    })
-  }
-
-  decrement() {
-    this.setState({
-      value: this.state.value - 1
-    })
-  }
-
-  render() {
-    return(
-      <div>
-        <h1>Counter</h1>
-        <h3>{this.state.value}</h3>
-        <button onClick={() => this.increment()}>Inc</button>
-        <button onClick={() => this.decrement()}>Dec</button>
-      </div>
-    )
-  }
-}
-
-export default CounterApp;
+export default connect(state => ({
+  state: state.counter
+}),
+(dispatch) => ({
+  actions: bindActionCreators(counterActions, dispatch)
+}))(CounterApp);
