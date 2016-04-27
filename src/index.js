@@ -1,6 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, browserHistory } from 'react-router';
-import routes from './routes';
+import {createStore, combineReducers} from 'redux';
+import {Provider} from 'react-redux';
 
-ReactDOM.render(<Router routes={routes} history={browserHistory}/>, document.getElementById('root'));
+import routes from './routes';
+import * as reducers from './reducers';
+
+console.log(reducers)
+
+const reducer = combineReducers(reducers);
+const store = createStore(reducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router routes={routes} history={browserHistory}/>
+  </Provider>,
+  document.getElementById('root')
+);
