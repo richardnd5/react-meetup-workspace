@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class InputSolfegeForm extends Component {
+class InputSolfegeForm extends Component {
 
   constructor(props) {
     super(props);
@@ -12,6 +12,10 @@ export default class InputSolfegeForm extends Component {
     }
     this.handleFieldChange = this.handleFieldChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.context.router.push('/solfege');
   }
 
   handleFieldChange(e) {
@@ -95,3 +99,9 @@ export default class InputSolfegeForm extends Component {
     )
   }
 }
+
+InputSolfegeForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
+
+export default InputSolfegeForm

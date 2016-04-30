@@ -26,14 +26,13 @@ export default class SolfegeApp extends Component {
     // var lyricsNoBreaks = wordContainer.lyrics.replace(/\n/g, " [br] ");
     // //create an array with each lyric word as an element
     var wordArray = song.lyrics.split(' ');
-    var wordContainerArray = [];
 
-    wordArray.map( (word, i) => {
-      wordContainerArray.push({
+    var wordContainerArray = wordArray.map( (word) => {
+      return {
         solfege: [],
         text: word,
         selected: false,
-      })
+      }
     })
 
     this.setState({
@@ -46,51 +45,55 @@ export default class SolfegeApp extends Component {
 
   handleWordClick(wordId) {
 
-    let newArrayOfWordContainers = this.state.wordContainers;
-    console.log(this.state.wordContainers)
-
-
-    newArrayOfWordContainers.map( (wordContainer) => {
-      wordContainer.selected = false
+    const wordContainers = this.state.wordContainers.map((word, i) => {
+      return Object.assign({}, word, {
+        selected: i === wordId
+      });
+    })
+    //ternary operator
+    this.setState({
+      wordContainers
     })
 
-    newArrayOfWordContainers[wordId].selected = !newArrayOfWordContainers[wordId].selected;
-
-    this.setState({
-      wordContainers: newArrayOfWordContainers
-    });
   }
 
-  handleSolfegeClick(theText, theColor) {
+  handleSolfegeClick(text, color) {
 
-    this.state.wordContainers.map( (wordContainer) => {
+    const wordContainers = this.state.wordContainers
+
+    wordContainers.map( (wordContainer) => {
       if (wordContainer.selected) {
         wordContainer.solfege.push({
-          text: theText,
-          color: theColor
+          text,
+          color
         })
       }
     })
 
     this.setState({
-        wordContainers: this.state.wordContainers
+        wordContainers
     })
   }
 
   handleDeleteClick() {
 
-    this.state.wordContainers.map( (wordContainer) => {
+    const wordContainers = this.state.wordContainers
+
+    wordContainers.map( (wordContainer) => {
       if (wordContainer.selected) {
         wordContainer.solfege.pop()
       }
     })
 
     this.setState({
-        wordContainers: this.state.wordContainers
+        wordContainers
     })
   }
 
   render(){
+
+    const { title, artist, wordContainers } = this.state
+
     return(
     <div>
 
@@ -111,9 +114,10 @@ export default class SolfegeApp extends Component {
         <div style={{
           marginTop: '40'
           }}>
-          <p style={{margin: 5}}><b>{this.state.title}</b> by {this.state.artist}</p>
 
-            {this.state.wordContainers.map( (wordContainer, i) => {
+          {title && <p style={{margin: 5}}><b>{title}</b> by {artist}</p>}
+
+            {wordContainers.map( (wordContainer, i) => {
               return (
                 <WordContainer
                   text={wordContainer.text}

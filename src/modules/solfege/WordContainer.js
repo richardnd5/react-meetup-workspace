@@ -1,6 +1,15 @@
 import React, { Component } from 'react';
 import TodoApp from './Todo';
 
+const styles = {
+  root: {
+    borderRadius: '5%',
+    margin: 5,
+    padding: 5,
+    display: 'inline-block',
+    cursor: 'pointer',
+} }
+
 export default class WordContainer extends Component {
 
   constructor(props) {
@@ -21,28 +30,24 @@ export default class WordContainer extends Component {
     this.props.onClick(this.props.id);
   }
 
-  myFunciton() {
-    console.log('you Diet Iet')
-  }
-
   render() {
     return (
       <div
         onClick={this.handleClick}
-        style= {{
+        style= {Object.assign({}, styles.root, {
           background: this.props.selected ? '#ccc' : '#eee',
-          borderRadius: '5%',
-          margin: 5,
-          padding: 5,
-          display: 'inline-block',
-          cursor: 'pointer',
-        }}>
+
+        })}>
         <div>
           {this.props.solfege.map( (syl, i) => {
             return (
-              <span style={{
-                color: syl.color,
-                padding: 3}}>
+              <span
+                style={{
+                  color: syl.color,
+                  padding: 3
+                }}
+                key={i}
+              >
                 {syl.text}
               </span>
             )

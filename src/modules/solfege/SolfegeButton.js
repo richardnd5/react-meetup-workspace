@@ -21,7 +21,7 @@ export default class SolfegeButton extends Component {
 
     return(
 
-      <div style= {{
+      <div className='solfegeButton' style= {{
         background: this.props.color,
         width: 60,
         height: 60,
