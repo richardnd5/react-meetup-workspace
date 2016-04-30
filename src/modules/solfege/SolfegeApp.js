@@ -26,7 +26,6 @@ export default class SolfegeApp extends Component {
         What a Nice Solfege Area</h1>
 
         <div style= {{border: '1px solid blue'}}>
-        <AddWord handleSubmit= {this.handleAddSyllable}/>
         <WordContainer text= 'YES!'/>
         <WordContainer text= 'I'/>
         <WordContainer text= 'do'/>
@@ -34,11 +33,7 @@ export default class SolfegeApp extends Component {
         <WordContainer text= 'believe'/>
 
         </div>
-
-
-
-
-
+        <AddWord/>
 
     </div>
   )}

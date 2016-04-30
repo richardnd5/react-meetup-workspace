@@ -5,7 +5,7 @@ class AddWord extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: []
+      todos: ['Hi,', 'everyone.', 'Its', 'me.']
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTodoClick = this.handleTodoClick.bind(this);
@@ -36,7 +36,7 @@ class AddWord extends Component {
   render() {
     return (
       <div>
-        <TodoForm handleSubmit={this.handleSubmit}/>
+        <TodoForm handleSubmit={this.handleSubmit} />
         <TodoList todos={this.state.todos} onTodoClick={this.handleTodoClick}/>
       </div>
     )

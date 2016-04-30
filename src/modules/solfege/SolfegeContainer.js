@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import BiggerClick from './BiggerClick';
 import SolfegeButton from './SolfegeButton';
 import SolfegeSyllable from './SolfegeSyllable';
+import AddWord from './AddWord';
 
 export default class SolfegeContainer extends Component {
 
@@ -14,17 +15,16 @@ export default class SolfegeContainer extends Component {
     <div style= {{
       textAlign: 'center',
       color:'black',
-      border: 'solid black 1px',
-      margin: 10,
       textAlign: 'left',
       display: 'inline-block',
-      padding: 8
+      paddingRight: 8
 
     }}>
 
     <SolfegeSyllable color= 'red' text= 'Do'/>
     <SolfegeSyllable color= 'pink' text= 'Ti'/>
     <SolfegeSyllable color= '#DDDD33' text= 'Mi'/>
+
 
     </div>
   )}
