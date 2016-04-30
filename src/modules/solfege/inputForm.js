@@ -32,11 +32,7 @@ export default class InputForm extends Component {
       return;
     }
 
-    this.props.onLyricsSubmit({
-      title,
-      artist,
-      lyrics
-    });
+    this.props.onLyricsSubmit(title, artist, lyrics);
 
     this.setState({
       artist: '',

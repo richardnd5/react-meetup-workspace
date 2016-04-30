@@ -11,6 +11,37 @@ export default class SolfegeApp extends Component {
     super(props);
 
     this.state = {
+      solfegeButtons: [
+        {
+          text: 'Do',
+          color: '#ff0000'
+        },
+        {
+          text: 'Re',
+          color: '#ff751a'
+        },
+        {
+          text: 'Mi',
+          color: '#ffff00'
+        },
+        {
+          text: 'Fa',
+          color: '#47d147'
+        },
+        {
+          text: 'So',
+          color: '#2d864d'
+        },
+        {
+          text: 'La',
+          color: '#4477DD'
+        },
+        {
+          text: 'Ti',
+          color: '#cc0099'
+        },
+
+      ],
       title: '',
       artist: '',
       wordContainers: [],
@@ -22,12 +53,12 @@ export default class SolfegeApp extends Component {
     this.handleDeleteClick = this.handleDeleteClick.bind(this);
   }
 
-  handleLyricsSubmit(song) {
+  handleLyricsSubmit(title, artist, lyrics) {
     // var lyricsNoBreaks = wordContainer.lyrics.replace(/\n/g, " [br] ");
     // //create an array with each lyric word as an element
-    var wordArray = song.lyrics.split(' ');
+    const wordArray = lyrics.split(' ');
 
-    var wordContainerArray = wordArray.map( (word) => {
+    const wordContainers = wordArray.map( (word) => {
       return {
         solfege: [],
         text: word,
@@ -36,9 +67,9 @@ export default class SolfegeApp extends Component {
     })
 
     this.setState({
-      title: song.title,
-      artist: song.artist,
-      wordContainers: wordContainerArray
+      title,
+      artist,
+      wordContainers
     })
 
   }
@@ -92,7 +123,7 @@ export default class SolfegeApp extends Component {
 
   render(){
 
-    const { title, artist, wordContainers } = this.state
+    const { solfegeButtons, title, artist, wordContainers } = this.state
 
     return(
     <div>
@@ -100,14 +131,18 @@ export default class SolfegeApp extends Component {
       <h1>Solfege Your Lyrics</h1>
 
       <div>
-        <SolfegeButton text='Do' color='#ff0000' onClick={this.handleSolfegeClick} />
-        <SolfegeButton text='Re' color='#ff751a' onClick={this.handleSolfegeClick} />
-        <SolfegeButton text='Mi' color='#ffff00' onClick={this.handleSolfegeClick} />
-        <SolfegeButton text='Fa' color='#47d147' onClick={this.handleSolfegeClick} />
-        <SolfegeButton text='So' color='#2d864d' onClick={this.handleSolfegeClick} />
-        <SolfegeButton text='La' color='#4477DD' onClick={this.handleSolfegeClick} />
-        <SolfegeButton text='Ti' color='#cc0099' onClick={this.handleSolfegeClick} />
-        <SolfegeButton text='Delete' color='gray' onClick={this.handleDeleteClick} />
+
+        {solfegeButtons.map( (button, i) => {
+          return (
+            <SolfegeButton
+              text={button.text}
+              color={button.color}
+              onClick={this.handleSolfegeClick}
+              key={i}
+            />
+          )
+        })}
+        <SolfegeButton text='delete' color='gray' onClick={this.handleDeleteClick} />
       </div>
 
       <div>

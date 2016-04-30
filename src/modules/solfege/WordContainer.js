@@ -36,10 +36,10 @@ export default class WordContainer extends Component {
         onClick={this.handleClick}
         style= {Object.assign({}, styles.root, {
           background: this.props.selected ? '#ccc' : '#eee',
-
         })}>
         <div>
-          {this.props.solfege.map( (syl, i) => {
+          {
+            this.props.solfege.map( (syl, i) => {
             return (
               <span
                 style={{
@@ -54,7 +54,7 @@ export default class WordContainer extends Component {
           })}
         </div>
         <div>{this.props.text}</div>
-
+        {console.log(this.props.solfege)}
       </div>
       )
     }
