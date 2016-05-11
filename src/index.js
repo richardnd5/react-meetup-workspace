@@ -11,6 +11,7 @@ console.log(reducers)
 
 const reducer = combineReducers(reducers);
 const store = createStore(reducer);
+import store from './store';
 
 ReactDOM.render(
   <Provider store={store}>
