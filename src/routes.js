@@ -5,7 +5,7 @@ import Workspace from './modules/Workspace';
 import Home from './modules/Home';
 import CommentApp from './modules/comments/CommentApp';
 import TodoApp from './modules/TodoApp';
-import CounterApp from './modules/Counter';
+import CounterApp from './modules/counter/Counter';
 
 
 export default (
