@@ -1,0 +1,7 @@
+export const SUBMIT = 'SUBMIT';
+export const SUBMIT_SUCCESS = 'SUBMIT_SUCCESS';
+export const SUBMIT_FAILURE = 'SUBMIT_FAILURE';
+
+export const TODO_CLICK = 'TODO_CLICK';
+export const TODO_CLICK_SUCCESS = 'TODO_CLICK_SUCCESS';
+export const TODO_CLICK_FAILURE = 'TODO_CLICK_FAILURE';
