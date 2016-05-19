@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import Workspace from './modules/Workspace';
 import Home from './modules/Home';
 import CommentApp from './modules/comments/CommentApp';
-import TodoApp from './modules/TodoApp';
+import TodoApp from './modules/todo-app/TodoApp';
 import CounterApp from './modules/counter/Counter';
 
 
