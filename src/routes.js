@@ -3,8 +3,9 @@ import { Route, IndexRoute } from 'react-router';
 
 import Workspace from './modules/Workspace';
 import Home from './modules/Home';
-import CommentApp from './modules/CommentApp';
+import CommentApp from './modules/comments/CommentApp';
 import TodoApp from './modules/TodoApp';
+import CounterApp from './modules/Counter';
 
 
 export default (
@@ -12,5 +13,6 @@ export default (
     <IndexRoute component={Home}/>
     <Route path="comment" component={CommentApp}/>
     <Route path="todo" component={TodoApp} />
+    <Route path="counter" component={CounterApp} />
   </Route>
 )
