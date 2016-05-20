@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import * as counterActions from '../actions/counterActions';
+import * as counterActions from './actions/counterActions';
 
 const CounterApp = ({state, actions}) => (
   <div>
