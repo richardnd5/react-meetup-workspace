@@ -17,6 +17,11 @@ const counter = (state = defaultState, action = {}) => {
         value: state.value - 1
       }
 
+    case types.DOSOMETHING:
+    return {
+      value: state.value + 5
+    }
+
     default:
       return state;
 

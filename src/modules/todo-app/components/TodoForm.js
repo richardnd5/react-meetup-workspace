@@ -32,10 +32,11 @@ class TodoForm extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input
-          type="text"
+          type="textArea"
           name="text"
           value={this.state.text}
           onChange={this.handleChange}
+          style= {{width: 200, height: 200 }}
         />
         <input
           type="submit"

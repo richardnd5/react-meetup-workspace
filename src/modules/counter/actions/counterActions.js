@@ -11,3 +11,9 @@ export function decrement() {
     type: types.DECREMENT
   }
 }
+
+export function doSomething() {
+  return {
+    type: types.DOSOMETHING
+  }
+}
