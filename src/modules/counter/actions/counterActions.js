@@ -12,8 +12,32 @@ export function decrement() {
   }
 }
 
-export function doSomething() {
+export function addFive() {
   return {
-    type: types.DOSOMETHING
+    type: types.ADDFIVE
+  }
+}
+
+export function minusFive() {
+  return {
+    type: types.MINUSFIVE
+  }
+}
+
+export function minusTwo() {
+  return {
+    type: types.MINUSTWO
+  }
+}
+
+export function addTwo() {
+  return {
+    type: types.ADDTWO
+  }
+}
+
+export function reset() {
+  return {
+    type: types.RESET
   }
 }

@@ -8,24 +8,26 @@ const counter = (state = defaultState, action = {}) => {
   switch(action.type) {
 
     case types.INCREMENT:
-      return {
-        value: state.value + 1
-      }
+      return {value: state.value + 1}
 
     case types.DECREMENT:
-      return {
-        value: state.value - 1
-      }
+      return {value: state.value - 1}
 
-    case types.DOSOMETHING:
-    return {
-      value: state.value + 5
-    }
+    case types.ADDFIVE:
+      return {value: state.value + 5}
 
-    default:
-      return state;
+    case types.MINUSFIVE:
+      return {value: state.value - 5}
 
-  }
-}
+    case types.MINUSTWO:
+      return {value: state.value - 2}
+
+    case types.ADDTWO:
+      return {value: state.value + 2}
+
+    case types.RESET:
+      return {value: state.value = 0}
+
+    default: return state;}}
 
 export default counter;
