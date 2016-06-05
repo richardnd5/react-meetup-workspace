@@ -11,8 +11,7 @@ const TodoApp = ({state, actions}) => (
     <h1>Todos</h1>
     <TodoForm handleSubmit={actions.handleSubmit}/>
     <TodoList todos={state.todos} onTodoClick={actions.handleTodoClick}/>
-    <p onClick={console.log('We Clicked The World!')}>Hello!</p>
-  </div>
+np  </div>
 )
 
 export default connect(state => ({

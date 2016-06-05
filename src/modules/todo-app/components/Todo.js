@@ -13,8 +13,13 @@ class Todo extends Component {
 
   render() {
     return (
-      <div onClick={this.handleClick} style={
-        {textDecoration: this.props.completed ? 'line-through' : 'none'}}>
+      <div onClick={this.handleClick} style={{
+        textDecoration: this.props.completed ? 'line-through' : 'none',
+        borderStyle: 'groove',
+        float: 'left',
+        width: '20%'
+
+      }}>
         {this.props.text}
       </div>
     )
