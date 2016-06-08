@@ -15,7 +15,6 @@ const LyricApp = ({state, actions}) => (
 )
 
 export default connect(state => ({
-  state: state.todo
 }),
 (dispatch) => ({
   actions: bindActionCreators(lyricActions, dispatch)

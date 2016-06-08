@@ -5,7 +5,10 @@ class LyricForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+
+      title: '',
+      artist: '',
+      lyrics: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -14,11 +17,14 @@ class LyricForm extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.handleSubmit({
-      text: this.state.text,
-      completed: false
+      title: this.state.title,
+      artist: this.state.artist,
+      lyrics: this.state.lyrics,
     });
     this.setState({
-      text: ''
+      title: '',
+      artist: '',
+      lyrics: ''
     })
   }
 
@@ -31,21 +37,17 @@ class LyricForm extends Component {
   render() {
     return (
 
-      <div style={{
-        background: 'yellow',
-
-      }}>
-
       <form onSubmit={this.handleSubmit} style= {{
         border: 'dashed',
         display: 'block',
         width: 200,
-        textAlign: 'center'
+        textAlign: 'center',
+        background: 'yellow',
       }}>
       <input
         type="text"
-        name="text"
-        value={this.state.text}
+        name="title"
+        value={this.state.title}
         onChange={this.handleChange}
         placeholder="Song Title"
         style= {{
@@ -57,8 +59,8 @@ class LyricForm extends Component {
       />
       <input
         type="text"
-        name="text"
-        value={this.state.text}
+        name="artist"
+        value={this.state.artist}
         onChange={this.handleChange}
         placeholder="Artist"
         style= {{
@@ -70,8 +72,8 @@ class LyricForm extends Component {
       />
         <input
           type="textArea"
-          name="text"
-          value={this.state.text}
+          name="lyrics"
+          value={this.state.lyrics}
           onChange={this.handleChange}
           placeholder="Line Of Lyric"
           style= {{
@@ -86,7 +88,7 @@ class LyricForm extends Component {
             margin: 5
           }}
         />
-      </form></div>
+      </form>
     )
   }
 }

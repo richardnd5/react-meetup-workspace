@@ -1,7 +1,9 @@
 import * as types from '../actions/actionTypes';
 
 const defaultState = {
-  todos: []
+  title: '',
+  artist: '',
+  lyrics: ''
 }
 
 const todo = (state = defaultState, action = {}) => {
