@@ -6,15 +6,12 @@ const defaultState = {
   lyrics: ''
 }
 
-const todo = (state = defaultState, action = {}) => {
+const lyrics = (state = defaultState, action = {}) => {
   switch(action.type) {
 
     case types.SUBMIT:
       return {
-        todos: [
-          ...state.todos,
-          action.todo
-        ]
+
       }
 
     default:
@@ -23,4 +20,4 @@ const todo = (state = defaultState, action = {}) => {
   }
 }
 
-export default todo;
+export default lyrics;
