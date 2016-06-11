@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Circle from './Circle'
-import CircleContainer from './CircleContainer'
-import SubmitCircleButton from './SubmitCircleButton'
+import Circle from './components/Circle'
+import CircleContainer from './components/CircleContainer'
+import SubmitCircleButton from './components/SubmitCircleButton'
 
 
-class CircleCentralYo extends Component {
+class CircleApp extends Component {
 
   constructor(props) {
     super(props);
@@ -63,4 +63,4 @@ class CircleCentralYo extends Component {
     )
   }
   }
-export default CircleCentralYo;
+export default CircleApp;

@@ -11,6 +11,7 @@ function Workspace(props) {
         <Link to="/todo">Todo</Link>{' '}
         <Link to="/lyrics">The Lyrics</Link>{' '}
         <Link to="/solfege">Serious Solfege</Link>{' '}
+        <Link to="/circles">Circle App</Link>{' '}
       </nav>
       {props.children}
     </div>

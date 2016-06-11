@@ -8,6 +8,7 @@ import TodoApp from './modules/todo-app/TodoApp';
 import CounterApp from './modules/counter/Counter';
 import LyricApp from './modules/lyric-app/LyricApp';
 import SolfegeApp from './modules/solfege/SolfegeApp';
+import CircleApp from './modules/circleApp/CircleApp';
 
 
 export default (
@@ -18,5 +19,6 @@ export default (
     <Route path="counter" component={CounterApp} />
     <Route path="lyrics" component={LyricApp} />
     <Route path="solfege" component={SolfegeApp} />
+    <Route path="circles" component={CircleApp} />
   </Route>
 )

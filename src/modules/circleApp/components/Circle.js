@@ -27,7 +27,8 @@ export default class Circle extends Component {
           border: 'solid',
           borderColor: '#3333EE',
           position:'relative',
-          backgroundColor: this.props.completed ? '#3664CC' : '#4EEDEE'}}>
+          backgroundColor: this.props.completed ? '#3664CC' : '#4EEDEE'
+        }}>
       </div>
     )
   }
