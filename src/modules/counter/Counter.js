@@ -2,6 +2,8 @@ import React from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import * as counterActions from './actions/counterActions';
+import CircleCentralYo from './components/CircleCentralYo';
+
 
 const CounterApp = ({state, actions}) => (
   <div>
@@ -9,7 +11,8 @@ const CounterApp = ({state, actions}) => (
     <h3>{state.value}</h3>
     <button onClick={() => actions.increment()}>Inc</button>
     <button onClick={() => actions.decrement()}>Dec</button>
-    <button onClick={() => actions.doSomething()}>Do Something</button>
+    <button onClick={() => actions.doSomething()}>Do Something</button><br/><br/><br/><br/>
+    <CircleCentralYo />
   </div>
 )
 
