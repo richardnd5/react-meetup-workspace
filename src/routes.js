@@ -6,6 +6,7 @@ import Home from './modules/Home';
 import CommentApp from './modules/comments/CommentApp';
 import TodoApp from './modules/TodoApp';
 import CounterApp from './modules/Counter';
+import TimerApp from './modules/TimerApp';
 
 
 export default (
@@ -14,5 +15,6 @@ export default (
     <Route path="comment" component={CommentApp}/>
     <Route path="todo" component={TodoApp} />
     <Route path="counter" component={CounterApp} />
+    <Route path="timer" component={TimerApp} />
   </Route>
 )
